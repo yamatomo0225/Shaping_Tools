@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lnag="ja">
+<head>
+    <meta charset="uAtf-8">
+    <meta name="topページ">
+    <title>top page</title>
+</head>
+
+<body>
+    <h1>整形</h1>
+        <input type="text" id="form-fortigate" name="form-fortigate">
+        <button type="button" onclick="seikei_fortigate()">fortigate整形</button>
+        <br>
+        <input type="text" id="form-paloalto" name="form-paloalto">
+        <button type="button" onclick="seikei_paloalto()">paloalto整形</button>
+    <p id="after"></p>
+<script>
+    'use strict';
+
+    function seikei_fortigate(){
+        const log_fortigate = document.getElementById('form-fortigate').value.split(' ','=');
+        log_fortigate[0] = log_fortigate[1].replace(/-/g,'/');
+        
+        document.getElementById('after').innerHTML = log_fortigate.join('<br>') //afterに繰り返し代入されて最後のメッセージのみ残ってしまう。
+        
+    }
+</script>
+</body>
+</html>
