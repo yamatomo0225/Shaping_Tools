@@ -9,29 +9,29 @@
 
 <body>
     <h1>整形</h1>
-        <div id="form_fortigate"><!--fortigate整形のフォーム-->
-            <input type="text" id="form_fortigate" name="form_fortigate" value='date=2018-12-27 time=11:28:07 logid="0419016384" type="utm" subtype="ips" eventtype="signature" level="alert" vd="vdom1" eventtime=1545938887 severity="info" srcip=172.16.200.55 srccountry="Reserved" dstip=10.1.100.11 srcintf="port11" srcintfrole="undefined" dstintf="port12" dstintfrole="undefined" sessionid=901 action="reset" proto=6 service="HTTP" policyid=1 attack="Eicar.Virus.Test.File" srcport=80 dstport=44362 hostname="172.16.200.55" url="/virus/eicar.com" direction="incoming" attackid=29844 profile="test-ips" ref="http://www.fortinet.com/ids/VID29844" user="bob" incidentserialno=877326946 msg="file_transfer: Eicar.Virus.0 Test.File," '>
-            <button type="button" onclick="seikei_fortigate()"> fortigate整形 </button>
-        </div>
-        <br>
-        <div id="form_paloalto"><!--paloalto整形のフォーム-->
-            <input type="text" id="form_paloalto" name="form_paloalto">
-            <button type="button" onclick="seikei_paloalto()"> paloalto整形 </button>
-        </div>
+            <input type="text" id="FORM_FORTIGATE" name="FORM_FORTIGATE" value='date=2018-12-27 time=11:28:07 logid="0419016384" type="utm" subtype="ips" eventtype="signature" level="alert" vd="vdom1" eventtime=1545938887 severity="info" srcip=172.16.200.55 srccountry="Reserved" dstip=10.1.100.11 srcintf="port11" srcintfrole="undefined" dstintf="port12" dstintfrole="undefined" sessionid=901 action="reset" proto=6 service="HTTP" policyid=1 attack="Eicar.Virus.Test.File" srcport=80 dstport=44362 hostname="172.16.200.55" url="/virus/eicar.com" direction="incoming" attackid=29844 profile="test-ips" ref="http://www.fortinet.com/ids/VID29844" user="bob" incidentserialno=877326946 msg="file_transfer: Eicar.Virus.0 Test.File," '>
+            <input type="button" onclick="SEIKEI_FORTIGATE()" value="fortigate整形"> 
         <p id="after"></p>
 <script>
     'use strict';
 
-    function seikei_fortigate(){
-        const log_fortigate = document.getElementById('form_fortigate').value;
-        var contents_of_log_fortigate = log_fortigate.map(/(?<=\=").+?(?=\" )|(?<=\=)[0-9].*?[0-9]?(?= )/g);
-        //msg="x"のxにはスペースが含まれており、スペースのみでの指定は危険。また、""で囲まれていない文字列があるので２つの条件を指定している。
-        var category_of_log_fortigate = log_fortigate.map()                                                 
-        //log_fortigate[0] = log_fortigate[1].replace(/-/g,'/');
-        
-        //document.getElementById('after').innerHTML = log_fortigate.join('<br>') 
+    function SEIKEI_FORTIGATE(){
+        var FORM_FORTIGATE = document.getElementById('FORM_FORTIGATE').value;
+        var CONTENTS_OF_LOG_FORTIGATE = LOG_FORTIGATE.map(/(?<=\=\").+?(?=\" )|(?<=\=)[0-9].*?[0-9]?(?= )/g);
 
-        console.log(contents_of_log_fortigate)
+        FORM_FORTIGATE = FORM_FORTIGATE.replace(//g,`\"${/(?<=\=)[0-9].*?[0-9]?(?= )/g}\"`);
+        console.log(CONTENTS_OF_LOG_FORTIGATE);
+        
+        //FORM_FORTIGATE.map( );
+        //""で囲まれた内容を抽出するために""を付与している。
+        //
+        
+        //var category_of_LOG_FORTIGATE = LOG_FORTIGATE.map();                                                 
+        //
+        
+        //document.getElementById('after').innerHTML = LOG_FORTIGATE.join('<br>') 
+
+        //console.log(contents_of_LOG_FORTIGATE)
     }
 </script>
 </body>
