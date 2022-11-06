@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="FORM_FORTIGATE" name="FORM_FORTIGATE" value='date=2018-12-27 time=11:28:07 logid="0419016384" type="utm" subtype="ips" eventtype="signature" level="alert" vd="vdom1" eventtime=1545938887 severity="info" srcip=172.16.200.55 srccountry="Reserved" dstip=10.1.100.11 srcintf="port11" srcintfrole="undefined" dstintf="port12" dstintfrole="undefined" sessionid=901 action="reset" proto=6 service="HTTP" policyid=1 attack="Eicar.Virus.Test.File" srcport=80 dstport=44362 hostname="172.16.200.55" url="/virus/eicar.com" direction="incoming" attackid=29844 profile="test-ips" ref="http://www.fortinet.com/ids/VID29844" user="bob" incidentserialno=877326946 msg="file_transfer: Eicar.Virus.Test.File," '>
+    <input type="button" onclick="SEIKEI_FORTIGATE()" value="fortigate整形">
+    <input type="button" value="button" onclick="test()">
+<script>
+    'use strict';
+    function SEIKEI_FORTIGATE(){
+        var RAW_LOG = document.getElementById('FORM_FORTIGATE').value;
+        RAW_LOG = RAW_LOG.replace(/\"/g,'');
+        var RAW_LOG_array = RAW_LOG.split(/(?<!:) /g);
+        RAW_LOG_array[0] = RAW_LOG_array[0].replace(/-/g,'/');
+        var LOG_FORTIGATE = {};
+        for(var i=0;i<RAW_LOG_array.length;i++){
+            LOG_FORTIGATE[RAW_LOG_array[i].match(/.*?(?=\=)/s)]= RAW_LOG_array[i].match(/(?<=\=).*/s);
+        }
+        Object.keys(LOG_FORTIGATE).forEach( function(value) {
+            console.log( value + '：' + this[value] );
+        }, LOG_FORTIGATE)
+        console.log(LOG_FORTIGATE.date)
+    }
+    function test(){
+        alert("成功");
+    }
+</script>
+</body>
+</html>
