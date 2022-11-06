@@ -1,17 +1,12 @@
 'use strict';
-
 function SEIKEI_FORTIGATE(){
-    const FORM_FORTIGATE = [];
-    
     var RAW_LOG = document.getElementById('FORM_FORTIGATE').value;
-    RAW_LOG.innerHTML = RAW_LOG
-    var CONTENTS_OF_LOG_FORTIGATE = FORM_FORTIGATE.map(/(?<=\=\").+?(?=\" )|(?<=\=)[0-9].*?[0-9]?(?= )/g);
+    RAW_LOG = RAW_LOG.replace(/\"/g,'');
+    var RAW_LOG_array = RAW_LOG.split(/(?<!:) /g);
+    RAW_LOG_array[0] = RAW_LOG_array[0].replace(/-/g,'/');
 
-    FORM_FORTIGATE = FORM_FORTIGATE.replace(//g,`\"${/(?<=\=)[0-9].*?[0-9]?(?= )/,g}\"`);
-    
-    //FORM_FORTIGATE.map( );
-    //""で囲まれた内容を抽出するために""を付与している。
-    //var category_of_LOG_FORTIGATE = LOG_FORTIGATE.map();                                                 
-    //document.getElementById('after').innerHTML = LOG_FORTIGATE.join('<br>') 
-    //console.log(contents_of_LOG_FORTIGATE)
+    var LOG_FORTIGATE = {};
+    for(var i=0;i<RAW_LOG_array.length;i++){
+        LOG_FORTIGATE[RAW_LOG_array[i].match(/.*?(?=\=)/s)]= RAW_LOG_array[i].match(/(?<=\=).*/s);
     }
+}
