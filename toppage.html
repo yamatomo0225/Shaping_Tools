@@ -18,7 +18,7 @@
 
             function SEIKEI_FORTIGATE(){
                 const FORM_FORTIGATE = [];
-                
+
                 var RAW_LOG = document.getElementById('FORM_FORTIGATE').value;
                 RAW_LOG.innerHTML = RAW_LOG
                 var CONTENTS_OF_LOG_FORTIGATE = FORM_FORTIGATE.map(/(?<=\=\").+?(?=\" )|(?<=\=)[0-9].*?[0-9]?(?= )/g);
@@ -30,6 +30,9 @@
                 //var category_of_LOG_FORTIGATE = LOG_FORTIGATE.map();                                                 
                 //document.getElementById('after').innerHTML = LOG_FORTIGATE.join('<br>') 
                 //console.log(contents_of_LOG_FORTIGATE)
+            }
+            function test(){
+                alert("成功");
             }
         </script>
     </body>
