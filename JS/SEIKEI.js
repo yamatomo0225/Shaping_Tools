@@ -6,24 +6,18 @@ function SEIKEI_FORTIGATE(){
     var RAW_LOG_array = RAW_LOG.split(/(?<!:) /g);
     RAW_LOG_array[0] = RAW_LOG_array[0].replace(/-/g,'/');
 
+
     var LOG = {};
     for(var i=0;i<RAW_LOG_array.length;i++){
         LOG[RAW_LOG_array[i].match(/.*?(?=\=)/s)]= RAW_LOG_array[i].match(/(?<=\=).*/s);
     }
-    console.log(LOG)
+    console.log(RAW_LOG_array)
 
-//ログ確認する際によく見る内容だけ抽出表示
-    document.getElementById("extract").innerHTML = `${LOG.date} ${LOG.time}<br>${LOG.severity}<br>${LOG.attack}<br>${LOG.action}<br>${LOG.srcip}(Port:${LOG.srcport}) → ${LOG.dstip}(Port:${LOG.dstport}) `;
-   
+//ログ確認する際によく見る内容だけ抽出表示　見づらいので後で調整予定？
+    document.getElementById("extract").innerHTML = `日時:${LOG.date} ${LOG.time}<br>severity:${LOG.severity}<br>attack:${LOG.attack}<br>action:${LOG.action}<br>通信経路${LOG.srcip}(Port:${LOG.srcport}) → ${LOG.dstip}(Port:${LOG.dstport}) `;
+       
 //ログの内容を全て表示
-    var tbody = document.getElementById('tbodyID');
-    for(var i=0;i<LOG.length;i++){
-        var tr = document.createElement('tr'); 
-        for (var j = 0; j < 2; j++) {
-          var td = document.createElement('td');
-          td.innerHTML = 'こんにちは' + j;
-          tbody.appendChild(td);
-        }
-        tbody.appendChild(tr);
-    }
+    var ALL_LOG = '';
+    RAW_LOG_array.forEach(value=> ALL_LOG +=`<li>${value}</li>`)
+    document.getElementById("ALL_LOG").innerHTML = ALL_LOG;
 }
