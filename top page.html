@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>top page</title>
+    <link rel="stylesheet" href="/CSS/top-page.css">
     <link rel="stylesheet" href="./CSS/textarea.css">
+    
 </head>
 <body>
-<!-- フォーム -->
-    <input type="text" id="FORM_FORTIGATE" name="FORM_FORTIGATE" value='date=2018-12-27 time=11:28:07 logid="0419016384" type="utm" subtype="ips" eventtype="signature" level="alert" vd="vdom1" eventtime=1545938887 severity="info" srcip=172.16.200.55 srccountry="Reserved" dstip=10.1.100.11 srcintf="port11" srcintfrole="undefined" dstintf="port12" dstintfrole="undefined" sessionid=901 action="reset" proto=6 service="HTTP" policyid=1 attack="Eicar.Virus.Test.File" srcport=80 dstport=44362 hostname="172.16.200.55" url="/virus/eicar.com" direction="incoming" attackid=29844 profile="test-ips" ref="http://www.fortinet.com/ids/VID29844" user="bob" incidentserialno=877326946 msg="file_transfer: Eicar.Virus.Test.File," '>
+<!-- 常時表示 -->
+    <h3>現在時刻</h3>
+    <span id="view_clock"></span><br><br>
+<!-- イベント管理 -- 開始時間や終了時刻を常時表示させたい 対象機器など表示させたい-->
+    <h3>イベント</h3>
+    <ul id="event"></ul>
+<!-- ログ整形 -->
+    
+    <input type="text" id="FORM_FORTIGATE" name="FORM_FORTIGATE" value='date=2018-12-27 time=11:28:07 logid="0419016384" type="utm" subtype="ips" eventtype="signature" level="alert" vd="vdom1" eventtime=1545938887 severity="info" srcip=172.16.200.55 srccountry="Reserved" dstip=10.1.100.11 srcintf="port11" srcintfrole="undefined" dstintf="port12" dstintfrole="undefined" sessionid=901 action="reset" proto=6 service="HTTP" policyid=1 attack="Eicar.Virus.Test.File" srcport=80 dstport=44362 hostname="172.16.200.55" url="/virus/eicar.com" direction="incoming" attackid=29844 profile="test-ips" ref="http://www.fortinet.com/ids/VID29844" user="bob" incidentserialno=877326946 msg="This is a pen." socccr=asdfasdf bbb="aaa"'>
     <input type="button" onclick="SEIKEI_FORTIGATE()" value="fortigate整形">
     <input type="button" onclick="make_mail" value="メール作成">
-<!--ログ抽出表示-->
+    <!--ログ抽出表示-->
     <p id="extract"></p>
-<!--ログ全表示-->
+    <!--ログ全表示-->
     <ul id="ALL_LOG"></ul>
   <br>
   <br>
@@ -22,9 +31,10 @@
         <div class="FlexTextarea__dummy" aria-hidden="true"></div>
         <textarea id="FlexTextarea" class="FlexTextarea__textarea"></textarea>
     </div>
-  <script src="./JS/SEIKEI.js"></script>
-  <script src="./JS/textarea.js"></script>
-  <script src="JS/mail.js"></script>
+<script src="./JS/standard.js"></script>
+<script src="./JS/SEIKEI.js"></script>
+<script src="./JS/textarea.js"></script>
+<script src="JS/mail.js"></script>
 
 </body>
 </html>
