@@ -1,3 +1,31 @@
 body {
     padding-top: 50px;
+
+}
+
+textarea {
+    width:50%;
+    height:100%;
+  }
+
+#container {
+    display: grid;
+    grid-template-rows: 100px 50px;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas: /* グリッドレイアウト */
+        "areaA areaB"
+        "areaA areaB"
+    
+}
+#itemA {
+    grid-area: areaA;
+    background-color: aqua;
+}
+#itemB{
+    grid-area: areaB;
+    background-color: bisque;
+}
+#itemC{
+    grid-area: areaB;
+    background-color: blueviolet;
 }
