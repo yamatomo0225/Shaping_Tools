@@ -1,31 +1,33 @@
 body {
-    padding-top: 50px;
-
+    margin: 1%;
 }
 
 textarea {
-    width:50%;
     height:100%;
-  }
+    width:90%;
+}
 
 #container {
     display: grid;
-    grid-template-rows: 100px 50px;
-    grid-template-columns: 150px 1fr;
+    grid-template-rows: 200px 100vh;
+    grid-template-columns: 25vm;
     grid-template-areas: /* グリッドレイアウト */
-        "areaA areaB"
-        "areaA areaB"
-    
+        "extract textareaA textareaA textareaA"
+        "logarea textareaA textareaA textareaA"
 }
-#itemA {
-    grid-area: areaA;
-    background-color: aqua;
+#div_extract {
+    grid-area: extract;
+    background-color: rgb(230, 195, 195);
 }
-#itemB{
-    grid-area: areaB;
-    background-color: bisque;
+
+#div_ALL_LOG {
+    grid-area: logarea;
+    background-color: rgb(247, 224, 224);
+
 }
-#itemC{
-    grid-area: areaB;
-    background-color: blueviolet;
+
+#div_Mail-area {
+    grid-area: textareaA;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
 }

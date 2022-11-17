@@ -17,3 +17,9 @@ function getNow() {
 	var s = year + "/" + mon + "/" + day + " " + hour + ":" + min + ":" + sec; 
 	return s;
 }
+
+function copy() {
+	var text = document.getElementById("Mail-area");
+	text.select();
+	document.execCommand('copy');
+}

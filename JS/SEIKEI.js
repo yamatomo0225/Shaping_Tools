@@ -11,13 +11,30 @@ function SEIKEI_FORTIGATE(){
     for(var i=0;i<RAW_LOG.length;i++){
         LOG[RAW_LOG[i].match(/.*(?==)/s)]= RAW_LOG[i].match(/(?<==).*/s);
     }
-    console.log(LOG)
+//console.log(LOG)
 
 //ログ確認する際によく見る内容だけ抽出表示　見づらいので後で調整予定？
-    document.getElementById("extract").innerHTML = `日時:${LOG.date} ${LOG.time}<br>severity:${LOG.severity}<br>attack:${LOG.attack}<br>action:${LOG.action}<br>通信経路${LOG.srcip}(Port:${LOG.srcport}) → ${LOG.dstip}(Port:${LOG.dstport}) `;
+    const exLOG = `日時:${LOG.date} ${LOG.time}<br>severity:${LOG.severity}<br>attack:${LOG.attack}<br>action:${LOG.action}<br>通信経路${LOG.srcip}(Port:${LOG.srcport}) → ${LOG.dstip}(Port:${LOG.dstport}) <br>${LOG.log_id}`
+    document.getElementById("extract").innerHTML = exLOG;
        
 //ログの内容を全て表示
     var ALL_LOG = '';
     RAW_LOG.forEach(value=> ALL_LOG +=`<li>${value}</li>`)
     document.getElementById("ALL_LOG").innerHTML = ALL_LOG;
+}
+
+
+function Call_Template () {
+    // プルダウン１で顧客名
+    // プルダウン２でテンプレート選択
+    // プルダウン１と２を読み込む
+    // 読み込んだ結果からテンプレートを選択
+    // メール本文テキストエリアにテンプレートを出力
+}
+
+
+function made_mail () {
+    // テキストエリアから抽出
+    // 連想配列から抽出した文字列を置換
+    // メール本文テキストエリアに置換後を出力
 }
